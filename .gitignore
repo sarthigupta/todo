@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# IDE & editor files
+.vscode/
+.idea/
+
+# Android/Gradle
+.gradle/
+.android/
+build/
+*.apk
+*.aar
+*.iml
+
+# Cache
+.cache/
+.caches/
+
+# System files
+.DS_Store
+Thumbs.db
