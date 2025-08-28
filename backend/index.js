@@ -4,16 +4,22 @@ const { todo } = require('./db');
 const { success } = require('zod');
 const app = express();
 const mongoose = require('mongoose')
+const cors = require('cors')
 mongoose.connect("mongodb+srv://workwithsarthi:Shagun%402115@sarthi21.tk4rh45.mongodb.net/todosnew")
 
 
 
 app.use(express.json())
+app.use(cors({
+    origin: 'http://localhost:5173'
+}))
 
 app.get('/todos',async function(req,res){
     const todos = await todo.find({})
-    console.log(todos);
-    
+    // console.log(todos);
+    res.status(200).json({
+        todos
+    })
     
 })
 app.post('/todo', async function(req,res){
@@ -28,7 +34,7 @@ app.post('/todo', async function(req,res){
 
     await todo.create({
         title: createPayload.title,
-        description: createPayload.title,
+        description: createPayload.description,
         completed: false
     })
     res.json({
